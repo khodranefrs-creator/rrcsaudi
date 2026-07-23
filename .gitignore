@@ -35,8 +35,8 @@ yarn-error.log*
 .env.local
 .env.production
 
-# generated
-/generated/
+# generated (Prisma v7 output)
+/src/generated/
 
 # vercel
 .vercel
