@@ -29,7 +29,7 @@ async function main() {
       value: {
         defaultTitle: "RRC Saudi - Real Estate Development & Investment",
         defaultDescription: "RRC Saudi delivers world-class real estate development and investment solutions across KSA.",
-        ogImage: "/images/og-home.jpg",
+        ogImage: "/images/og-default.svg",
       },
       description: "Default SEO meta tags for the public website.",
     },

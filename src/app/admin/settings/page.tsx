@@ -35,7 +35,7 @@ export default function AdminSettingsPage() {
   const [seo, setSeo] = useState<SeoSettings>({
     defaultTitle: "",
     defaultDescription: "",
-    ogImage: "/images/og-home.jpg",
+    ogImage: "/images/og-default.svg",
   });
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -128,7 +128,7 @@ export default function AdminSettingsPage() {
               <Input
                 value={contact.addressEn}
                 onChange={(e) => setContact({ ...contact, addressEn: e.target.value })}
-                placeholder="Riyadh, Saudi Arabia"
+                placeholder="PJCG+XR7, King Saud University, Riyadh 12372, Saudi Arabia"
               />
             </div>
             <div>
@@ -136,7 +136,7 @@ export default function AdminSettingsPage() {
               <Input
                 value={contact.addressAr}
                 onChange={(e) => setContact({ ...contact, addressAr: e.target.value })}
-                placeholder="الرياض، المملكة العربية السعودية"
+                placeholder="PJCG+XR7، جامعة الملك سعود، الرياض 12372، المملكة العربية السعودية"
               />
             </div>
           </CardContent>

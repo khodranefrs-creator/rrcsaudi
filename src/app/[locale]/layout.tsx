@@ -89,6 +89,7 @@ export default async function LocaleLayout({ children, params }: Props) {
               description: schemaT("description"),
               url: `https://rrcsaudi.com/${locale}`,
               image: "https://rrcsaudi.com/images/og-default.svg",
+              telephone: "+966 11 400 1495",
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "PJCG+XR7, King Saud University",
