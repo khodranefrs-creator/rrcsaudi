@@ -55,8 +55,8 @@ export default function ContactForm() {
 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [contactSettings, setContactSettings] = useState<ContactSettings | null>(null)
-  const resolvedPhone = contactSettings?.phone || contactT("phone")
-  const resolvedEmail = contactSettings?.email || contactT("email")
+  const resolvedPhone = (contactSettings?.phone || "").trim() || contactT("phone")
+  const resolvedEmail = (contactSettings?.email || "").trim() || contactT("email")
 
   useEffect(() => {
     fetch("/api/settings")
@@ -234,6 +234,7 @@ export default function ContactForm() {
                   </p>
                 </div>
               </div>
+              {resolvedPhone && (
               <div className="flex items-start gap-3">
                 <Phone className="mt-0.5 h-5 w-5 shrink-0 text-gold-500" />
                 <div>
@@ -245,6 +246,7 @@ export default function ContactForm() {
                   </p>
                 </div>
               </div>
+              )}
               <div className="flex items-start gap-3">
                 <Mail className="mt-0.5 h-5 w-5 shrink-0 text-gold-500" />
                 <div>

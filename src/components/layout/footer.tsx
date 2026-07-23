@@ -31,11 +31,11 @@ export default function Footer() {
       .catch(() => {});
   }, []);
 
-  const phone = contactSettings?.phone || t("phone");
-  const email = contactSettings?.email || t("email");
+  const phone = (contactSettings?.phone || "").trim() || t("phone");
+  const email = (contactSettings?.email || "").trim() || t("email");
   const address = locale === "ar"
-    ? contactSettings?.addressAr || t("address")
-    : contactSettings?.addressEn || t("address");
+    ? (contactSettings?.addressAr || "").trim() || t("address")
+    : (contactSettings?.addressEn || "").trim() || t("address");
 
   const hasContactInfo = phone || email || address;
 

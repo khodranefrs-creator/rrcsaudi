@@ -118,6 +118,7 @@ export default function ContactPage() {
                   <p className="text-sm text-muted-foreground">{t("info.address")}</p>
                 </div>
               </div>
+              {t("info.phone") && (
               <div className="flex items-start gap-3">
                 <Phone className="h-5 w-5 text-gold-600 shrink-0 mt-0.5" />
                 <div>
@@ -125,6 +126,7 @@ export default function ContactPage() {
                   <p className="text-sm text-muted-foreground">{t("info.phone")}</p>
                 </div>
               </div>
+              )}
               <div className="flex items-start gap-3">
                 <Mail className="h-5 w-5 text-gold-600 shrink-0 mt-0.5" />
                 <div>

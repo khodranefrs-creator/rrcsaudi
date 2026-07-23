@@ -110,7 +110,7 @@ export default function AdminSettingsPage() {
               <Input
                 value={contact.phone}
                 onChange={(e) => setContact({ ...contact, phone: e.target.value })}
-                placeholder="+966 XX XXX XXXX"
+                placeholder="+966 5X XXX XXXX"
               />
               <p className="text-xs text-muted-foreground mt-1">Leave empty to hide phone on public pages</p>
             </div>
