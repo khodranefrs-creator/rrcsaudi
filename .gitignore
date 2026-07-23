@@ -35,8 +35,8 @@ yarn-error.log*
 .env.local
 .env.production
 
-# Prisma v7 client is generated here but committed to ensure Vercel builds reliably
-# src/generated/
+# Prisma client generated into node_modules/.prisma/client/
+# generated/
 
 # vercel
 .vercel
