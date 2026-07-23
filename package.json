@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "vercel-build": "prisma generate && next build",
-    "postinstall": "prisma generate || true"
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.4.0",
