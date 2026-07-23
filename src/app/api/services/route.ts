@@ -3,6 +3,8 @@ import { prisma } from "@/lib/prisma";
 import { successResponse, errorResponse } from "@/lib/api-helpers";
 import { serviceSchema } from "@/lib/zod-schemas";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   try {
     const services = await prisma.service.findMany({ orderBy: { order: "asc" } });

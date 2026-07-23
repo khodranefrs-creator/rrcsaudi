@@ -3,6 +3,8 @@ import { prisma } from "@/lib/prisma";
 import { successResponse, errorResponse } from "@/lib/api-helpers";
 import { projectSchema } from "@/lib/zod-schemas";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   try {
     const projects = await prisma.project.findMany({

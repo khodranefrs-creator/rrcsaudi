@@ -3,6 +3,8 @@ import { prisma } from "@/lib/prisma";
 import { successResponse, errorResponse } from "@/lib/api-helpers";
 import { partnerSchema } from "@/lib/zod-schemas";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   try {
     const partners = await prisma.partner.findMany({ orderBy: { createdAt: "desc" } });
