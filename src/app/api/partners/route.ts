@@ -7,7 +7,7 @@ export async function GET() {
   try {
     const partners = await prisma.partner.findMany({ orderBy: { createdAt: "desc" } });
     return successResponse(partners);
-  } catch (error) {
+  } catch {
     return errorResponse("Failed to fetch partners", 500);
   }
 }
@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
       },
     });
     return successResponse(partner, 201);
-  } catch (error) {
+  } catch {
     return errorResponse("Failed to create partner", 500);
   }
 }

@@ -4,18 +4,17 @@ import { useState, useRef, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useLocale } from "next-intl"
+import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 import {
   Menu,
   ChevronLeft,
   ChevronRight,
   LogOut,
-  User,
   Settings,
   ChevronDown,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { adminNavigation } from "@/data/navigation"
 
 const breadcrumbLabels: Record<string, { en: string; ar: string }> = {
   admin: { en: "Dashboard", ar: "لوحة التحكم" },
@@ -122,9 +121,11 @@ export default function AdminHeader({ onMenuToggle }: AdminHeaderProps) {
         >
           <div className="h-8 w-8 rounded-full bg-gold-500/20 flex items-center justify-center text-gold-400 text-sm font-bold">
             {user.avatar ? (
-              <img
+              <Image
                 src={user.avatar}
                 alt={user.name}
+                width={32}
+                height={32}
                 className="h-8 w-8 rounded-full object-cover"
               />
             ) : (

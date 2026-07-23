@@ -1,7 +1,5 @@
 "use client";
 
-import { useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SessionProvider } from "next-auth/react";

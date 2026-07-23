@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Section } from "@/components/ui/section";
 import { Card, CardContent } from "@/components/ui/card";

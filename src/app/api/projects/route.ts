@@ -10,7 +10,7 @@ export async function GET() {
       include: { media: true },
     });
     return successResponse(projects);
-  } catch (error) {
+  } catch {
     return errorResponse("Failed to fetch projects", 500);
   }
 }
@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
       },
     });
     return successResponse(project, 201);
-  } catch (error) {
+  } catch {
     return errorResponse("Failed to create project", 500);
   }
 }

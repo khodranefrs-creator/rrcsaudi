@@ -2,7 +2,6 @@ import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { Section } from "@/components/ui/section";
-import { Badge } from "@/components/ui/badge";
 import { Calendar, ArrowRight } from "lucide-react";
 
 const blogPosts = [

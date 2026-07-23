@@ -7,7 +7,7 @@ export async function GET() {
   try {
     const inquiries = await prisma.inquiry.findMany({ orderBy: { createdAt: "desc" } });
     return successResponse(inquiries);
-  } catch (error) {
+  } catch {
     return errorResponse("Failed to fetch inquiries", 500);
   }
 }
@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
       },
     });
     return successResponse(inquiry, 201);
-  } catch (error) {
+  } catch {
     return errorResponse("Failed to create inquiry", 500);
   }
 }

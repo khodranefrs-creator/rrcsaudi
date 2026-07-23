@@ -21,8 +21,6 @@ export async function generateMetadata({ params }: Props) {
 export default async function AboutPage({ params }: Props) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "about" });
-  const isAr = locale === "ar";
-
   return (
     <>
       <section className="bg-gradient-navy py-16 md:py-24">

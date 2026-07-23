@@ -7,7 +7,7 @@ export async function GET() {
   try {
     const services = await prisma.service.findMany({ orderBy: { order: "asc" } });
     return successResponse(services);
-  } catch (error) {
+  } catch {
     return errorResponse("Failed to fetch services", 500);
   }
 }
@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
       },
     });
     return successResponse(service, 201);
-  } catch (error) {
+  } catch {
     return errorResponse("Failed to create service", 500);
   }
 }

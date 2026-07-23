@@ -9,7 +9,6 @@ export default function Footer() {
   const navT = useTranslations("nav");
   const params = useParams();
   const locale = params.locale as string;
-  const isAr = locale === "ar";
 
   return (
     <footer className="bg-navy-900 text-white">

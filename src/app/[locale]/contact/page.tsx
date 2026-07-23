@@ -11,13 +11,8 @@ import { Phone, Mail, MapPin, Send, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 
-type Props = {
-  params: Promise<{ locale: string }>;
-};
-
 export default function ContactPage() {
   const t = useTranslations("contact");
-  const commonT = useTranslations("common");
   const params = useParams();
   const locale = params.locale as string;
   const isAr = locale === "ar";

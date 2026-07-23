@@ -4,6 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useLocale } from "next-intl"
+import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 import {
   LayoutDashboard,
@@ -13,13 +14,11 @@ import {
   FileText,
   MessageSquare,
   Mail,
-  Image,
+  Image as ImageIcon,
   Settings,
   Users,
   ChevronDown,
   LogOut,
-  ChevronLeft,
-  ChevronRight,
   X,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -33,7 +32,7 @@ const adminIcons: Record<string, React.ComponentType<{ className?: string }>> = 
   "Blog Posts": FileText,
   "Inquiries": MessageSquare,
   "Contact Requests": Mail,
-  "Media": Image,
+  "Media": ImageIcon,
   "Site Settings": Settings,
   "Users": Users,
 }
@@ -148,9 +147,11 @@ export default function AdminSidebar({ open, onClose }: AdminSidebarProps) {
           >
             <div className="h-8 w-8 rounded-full bg-gold-500/20 flex items-center justify-center text-gold-400 text-sm font-bold shrink-0">
               {user.avatar ? (
-                <img
+                <Image
                   src={user.avatar}
                   alt={user.name}
+                  width={32}
+                  height={32}
                   className="h-8 w-8 rounded-full object-cover"
                 />
               ) : (

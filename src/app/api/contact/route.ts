@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
       },
     });
     return successResponse(contact, 201);
-  } catch (error) {
+  } catch {
     return errorResponse("Failed to send message", 500);
   }
 }

@@ -23,7 +23,6 @@ export default async function InvestmentPage({ params }: Props) {
   const t = await getTranslations({ locale, namespace: "investment" });
   const commonT = await getTranslations({ locale, namespace: "common" });
   const contactT = await getTranslations({ locale, namespace: "contact" });
-  const isAr = locale === "ar";
   const benefits = t.raw("benefits") as string[];
 
   return (
