@@ -91,8 +91,10 @@ export default async function LocaleLayout({ children, params }: Props) {
               image: "https://rrcsaudi.com/images/og-default.svg",
               address: {
                 "@type": "PostalAddress",
+                streetAddress: "PJCG+XR7, King Saud University",
+                addressLocality: "Riyadh",
+                postalCode: "12372",
                 addressCountry: "SA",
-                addressRegion: "Riyadh",
               },
               sameAs: [],
               knowsLanguage: locale === "ar" ? "ar" : "en",

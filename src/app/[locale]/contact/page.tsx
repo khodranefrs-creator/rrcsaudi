@@ -123,7 +123,7 @@ export default function ContactPage() {
                 <Phone className="h-5 w-5 text-gold-600 shrink-0 mt-0.5" />
                 <div>
                   <h4 className="font-medium text-sm">Phone</h4>
-                  <p className="text-sm text-muted-foreground">{t("info.phone")}</p>
+                  <p className="text-sm text-muted-foreground" dir="ltr" style={{ unicodeBidi: "isolate" }}>{t("info.phone")}</p>
                 </div>
               </div>
               )}
@@ -131,7 +131,7 @@ export default function ContactPage() {
                 <Mail className="h-5 w-5 text-gold-600 shrink-0 mt-0.5" />
                 <div>
                   <h4 className="font-medium text-sm">Email</h4>
-                  <p className="text-sm text-muted-foreground">{t("info.email")}</p>
+                  <p className="text-sm text-muted-foreground" dir="ltr" style={{ unicodeBidi: "isolate" }}>{t("info.email")}</p>
                 </div>
               </div>
             </CardContent>

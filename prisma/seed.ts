@@ -12,10 +12,10 @@ async function main() {
     create: {
       key: "contact",
       value: {
-        phone: "",
-        email: "",
-        addressEn: "",
-        addressAr: "",
+        phone: "+966 11 400 1495",
+        email: "info@rrcsaudi.com",
+        addressEn: "PJCG+XR7, King Saud University, Riyadh 12372, Saudi Arabia",
+        addressAr: "PJCG+XR7، جامعة الملك سعود، الرياض 12372، المملكة العربية السعودية",
       },
       description: "Contact information displayed on the public website. Leave empty to hide fields.",
     },
