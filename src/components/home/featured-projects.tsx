@@ -51,7 +51,7 @@ export default function FeaturedProjects() {
                   : "bg-white/10 text-white/60 hover:bg-white/20 hover:text-white"
               }`}
             >
-              {cat === "ALL" ? commonT("viewAll") : cat.replace("_", " ")}
+              {t(`categories.${cat}`)}
             </button>
           ))}
         </div>
@@ -90,11 +90,11 @@ export default function FeaturedProjects() {
                   <div className="absolute inset-0 bg-linear-to-t from-navy-900/80 via-transparent to-transparent" />
                   <div className="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/20" />
 
-                  <div className="absolute left-3 top-3">
-                    <Badge variant="gold">{project.category}</Badge>
+                  <div className="absolute start-3 top-3">
+                    <Badge variant="gold">{t(`categories.${project.category}`)}</Badge>
                   </div>
 
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <div className="absolute bottom-0 inset-x-0 p-4">
                     <div className="flex items-start gap-2 text-white/60">
                       <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0" />
                       <span className="text-xs">

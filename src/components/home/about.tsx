@@ -1,15 +1,15 @@
 "use client"
 
-import { useTranslations } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
 import { motion } from "framer-motion"
 import { Section } from "@/components/ui/section"
 import { AnimatedCounter } from "@/components/ui/animated-counter"
 
 const statsConfig = [
-  { key: "years", target: 25, suffix: "+" },
-  { key: "projects", target: 150, suffix: "+" },
-  { key: "partners", target: 50, suffix: "+" },
-  { key: "expertise", target: 5, suffix: "" },
+  { key: "years", target: 25 },
+  { key: "projects", target: 150 },
+  { key: "partners", target: 50 },
+  { key: "expertise", target: 5 },
 ] as const
 
 const containerVariants = {
@@ -26,6 +26,7 @@ const itemVariants = {
 } as const
 
 export default function About() {
+  const locale = useLocale()
   const t = useTranslations("about")
 
   return (
@@ -56,9 +57,9 @@ export default function About() {
             variants={itemVariants}
           >
             {statsConfig.map((stat) => (
-              <div key={stat.key} className="text-center">
+              <div key={stat.key} className="text-center" dir={locale === "ar" ? "ltr" : "ltr"}>
                 <div className="text-3xl font-bold text-gold-500 sm:text-4xl">
-                  <AnimatedCounter target={stat.target} suffix={stat.suffix} />
+                  <AnimatedCounter target={stat.target} suffix={t(`statsSuffix.${stat.key}`)} />
                 </div>
                 <div className="mt-1 text-xs font-medium text-charcoal-500 uppercase tracking-wider">
                   {t(`stats.${stat.key}`)}
@@ -85,9 +86,9 @@ export default function About() {
             }}
           />
           <div
-            className="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-gold-500/10 to-transparent"
+            className="absolute bottom-0 inset-x-0 h-32 bg-linear-to-t from-gold-500/10 to-transparent"
           />
-          <div className="absolute bottom-6 left-6 right-6">
+          <div className="absolute bottom-6 inset-x-6">
             <div className="flex items-center gap-3 rounded-lg bg-white/10 p-4 backdrop-blur-sm">
               <div className="h-10 w-1 rounded-full bg-gold-500" />
               <div>

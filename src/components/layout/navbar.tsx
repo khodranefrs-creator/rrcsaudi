@@ -64,7 +64,7 @@ export default function Navbar() {
               href={`/${otherLocale}${pathname.replace(/^\/(en|ar)/, "") || "/"}`}
               className="text-sm font-medium text-charcoal-500 hover:text-navy-900 transition-colors"
             >
-              {isAr ? "English" : "العربية"}
+              {t(isAr ? "localeEn" : "localeAr")}
             </Link>
 
             <Button asChild variant="gold" size="sm" className="hidden sm:inline-flex">

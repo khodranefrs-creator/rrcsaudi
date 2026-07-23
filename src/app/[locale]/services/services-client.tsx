@@ -51,7 +51,7 @@ export function ServicesClient() {
                 )}
                 <div className="mt-4 flex items-center text-sm font-medium text-gold-600">
                   {t("common.learnMore")}
-                  <ArrowRight className={cn("ml-1 h-3 w-3", isAr && "rotate-180")} />
+                  <ArrowRight className={cn("ms-1 h-3 w-3", isAr && "rotate-180")} />
                 </div>
               </CardContent>
             </Card>

@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { useTranslations } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
 import { motion } from "framer-motion"
 import { ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -23,6 +23,7 @@ const lineVariants = {
 } as const
 
 export default function Hero() {
+  const locale = useLocale()
   const t = useTranslations("hero")
 
   return (
@@ -65,9 +66,9 @@ export default function Hero() {
         <motion.p
           className="mx-auto mt-6 max-w-3xl text-lg text-white/70 sm:text-xl"
           variants={itemVariants}
-          dir="rtl"
+          dir={locale === "ar" ? "rtl" : "ltr"}
         >
-          نصنع مستقبل العقارات التجارية في المملكة
+          {locale === "ar" ? t("subtitleAr") : t("subtitle")}
         </motion.p>
 
         <motion.div
@@ -94,13 +95,13 @@ export default function Hero() {
       </motion.div>
 
       <motion.div
-        className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2"
+        className="absolute bottom-8 start-1/2 z-10 -translate-x-1/2"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 2, duration: 0.8, repeat: Infinity, repeatType: "reverse" }}
       >
         <div className="flex flex-col items-center gap-2">
-          <span className="text-xs tracking-widest text-white/40 uppercase">Scroll</span>
+          <span className="text-xs tracking-widest text-white/40 uppercase">{t("scroll")}</span>
           <ChevronDown className="h-5 w-5 text-gold-400" />
         </div>
       </motion.div>

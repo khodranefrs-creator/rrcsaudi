@@ -1,18 +1,13 @@
 "use client"
 
 import Link from "next/link"
-import { useTranslations } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
 import { motion } from "framer-motion"
 import { Check, ArrowUpRight, TrendingUp, Building2, Users, BarChart3 } from "lucide-react"
 import { Section } from "@/components/ui/section"
 import { Button } from "@/components/ui/button"
 
-const highlights = [
-  { icon: TrendingUp, label: "Market Growth", value: "8.5%", detail: "Annual CAGR" },
-  { icon: Building2, label: "Total Portfolio", value: "2.4B+", detail: "SAR Assets" },
-  { icon: Users, label: "Active Investors", value: "500+", detail: "Growing Network" },
-  { icon: BarChart3, label: "Avg. Returns", value: "12-15%", detail: "Annual ROI" },
-]
+const highlightIcons = [TrendingUp, Building2, Users, BarChart3]
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -27,16 +22,11 @@ const itemVariants = {
   visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
 } as const
 
-const benefits = [
-  "High-growth market with strong fundamentals",
-  "Transparent and ethical investment practices",
-  "Diversified portfolio across multiple sectors",
-  "Expert management and strategic guidance",
-  "Regular performance reporting and updates",
-]
-
 export default function Investment() {
+  const locale = useLocale()
   const t = useTranslations("investment")
+  const highlights = t.raw("highlights") as { label: string; value: string; detail: string }[]
+  const benefits = t.raw("benefits") as string[]
 
   return (
     <Section className="bg-white">
@@ -48,9 +38,9 @@ export default function Investment() {
         viewport={{ once: true, margin: "-100px" }}
       >
         <div className="space-y-8">
-          <motion.div variants={itemVariants}>
-            <h2 className="text-3xl font-bold tracking-tight text-navy-900 sm:text-4xl">
-              Strategic Retail Investment Opportunities
+            <motion.div variants={itemVariants}>
+            <h2 className="text-3xl font-bold tracking-tight text-navy-900 sm:text-4xl" dir={locale === "ar" ? "rtl" : "ltr"}>
+              {t("highlightsTitle")}
             </h2>
           </motion.div>
 
@@ -65,15 +55,15 @@ export default function Investment() {
             className="grid grid-cols-2 gap-4"
             variants={itemVariants}
           >
-            {highlights.map((h) => {
-              const Icon = h.icon
+            {highlights.map((h, i) => {
+              const Icon = highlightIcons[i]
               return (
                 <div
                   key={h.label}
                   className="rounded-xl border border-gold-500/20 bg-cream p-4"
                 >
                   <Icon className="mb-2 h-5 w-5 text-gold-500" />
-                  <div className="text-2xl font-bold text-navy-900">{h.value}</div>
+                  <div className="text-2xl font-bold text-navy-900" dir="ltr">{h.value}</div>
                   <div className="text-xs text-charcoal-500">{h.label}</div>
                   <div className="text-xs text-gold-600">{h.detail}</div>
                 </div>
@@ -95,7 +85,7 @@ export default function Investment() {
           <motion.div variants={itemVariants}>
             <Button variant="gold" size="lg" className="text-base font-semibold" asChild>
               <Link href="/contact">
-                Contact Investment Team
+                {t("ctaDetailed")}
                 <ArrowUpRight className="h-4 w-4" />
               </Link>
             </Button>

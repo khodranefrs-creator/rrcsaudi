@@ -44,6 +44,8 @@ export default function ContactForm() {
   const isRtl = locale === "ar"
   const t = useTranslations("contact")
 
+  const contactT = useTranslations("contact.info")
+
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const {
@@ -197,34 +199,34 @@ export default function ContactForm() {
         <div className="lg:col-span-2 space-y-6" dir={isRtl ? "rtl" : "ltr"}>
           <div className="rounded-xl bg-white p-6 shadow-lux space-y-6">
             <h3 className="text-lg font-semibold text-navy-900">
-              {isRtl ? "معلومات الاتصال" : "Contact Information"}
+              {t("title")}
             </h3>
             <div className="space-y-4">
               <div className="flex items-start gap-3">
                 <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-gold-500" />
                 <div>
                   <p className="text-sm font-medium text-charcoal-900">
-                    {isRtl ? "العنوان" : "Address"}
+                    {contactT("addressLabel")}
                   </p>
-                  <p className="text-sm text-charcoal-500">{t("info.address")}</p>
+                  <p className="text-sm text-charcoal-500">{contactT("address")}</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <Phone className="mt-0.5 h-5 w-5 shrink-0 text-gold-500" />
                 <div>
                   <p className="text-sm font-medium text-charcoal-900">
-                    {isRtl ? "الهاتف" : "Phone"}
+                    {contactT("phoneLabel")}
                   </p>
-                  <p className="text-sm text-charcoal-500">{t("info.phone")}</p>
+                  <p className="text-sm text-charcoal-500" dir="ltr" style={{ unicodeBidi: "isolate" }}>{contactT("phone")}</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <Mail className="mt-0.5 h-5 w-5 shrink-0 text-gold-500" />
                 <div>
                   <p className="text-sm font-medium text-charcoal-900">
-                    {isRtl ? "البريد الإلكتروني" : "Email"}
+                    {contactT("emailLabel")}
                   </p>
-                  <p className="text-sm text-charcoal-500">{t("info.email")}</p>
+                  <p className="text-sm text-charcoal-500">{contactT("email")}</p>
                 </div>
               </div>
             </div>
@@ -232,9 +234,7 @@ export default function ContactForm() {
 
           <div className="rounded-xl bg-navy-900 p-6 text-center">
             <p className="text-sm text-gold-400">
-              {isRtl
-                ? "نحن متواجدون للإجابة على استفساراتكم من الأحد إلى الخميس"
-                : "We are available Sunday through Thursday to answer your inquiries"}
+              {contactT("availability")}
             </p>
           </div>
         </div>

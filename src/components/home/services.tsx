@@ -1,6 +1,6 @@
 "use client"
 
-import { useTranslations } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
 import { motion } from "framer-motion"
 import {
   Building2,
@@ -40,6 +40,7 @@ const cardVariants = {
 } as const
 
 export default function Services() {
+  const locale = useLocale()
   const t = useTranslations("services")
 
   return (
@@ -67,15 +68,15 @@ export default function Services() {
                       <Icon className="h-6 w-6" />
                     </div>
                     <CardTitle className="text-xl text-navy-900">
-                      {service.titleEn}
+                      {locale === "ar" ? service.titleAr : service.titleEn}
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <p className="text-sm leading-relaxed text-charcoal-600">
-                      {service.descriptionEn}
+                      {locale === "ar" ? service.descriptionAr : service.descriptionEn}
                     </p>
                     <ul className="space-y-2">
-                      {service.featuresEn.map((feature) => (
+                      {(locale === "ar" ? service.featuresAr : service.featuresEn).map((feature) => (
                         <li
                           key={feature}
                           className="flex items-start gap-2 text-sm text-charcoal-600"

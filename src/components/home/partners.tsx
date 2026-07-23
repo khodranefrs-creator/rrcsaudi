@@ -8,7 +8,6 @@ import { partners } from "@/data/partners"
 import { cn } from "@/lib/utils"
 
 const types = ["ALL", "DEVELOPER", "BRAND", "STRATEGIC"] as const
-const typeLabels = { ALL: "All Partners", DEVELOPER: "Developers", BRAND: "Brands", STRATEGIC: "Strategic" }
 
 export default function Partners() {
   const locale = useLocale()
@@ -31,7 +30,7 @@ export default function Partners() {
                 : "bg-charcoal-100 text-charcoal-600 hover:bg-charcoal-200"
             )}
           >
-            {typeLabels[type]}
+            {t(`filters.${type}`)}
           </button>
         ))}
       </div>

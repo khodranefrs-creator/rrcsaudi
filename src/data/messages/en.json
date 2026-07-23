@@ -7,13 +7,17 @@
     "investment": "Investment",
     "partners": "Partners",
     "blog": "Blog",
-    "contact": "Contact Us"
+    "contact": "Contact Us",
+    "localeEn": "English",
+    "localeAr": "العربية"
   },
   "hero": {
     "title": "Shaping the Future of Real Estate",
     "subtitle": "RRC Saudi delivers world-class real estate development and investment solutions across the Kingdom of Saudi Arabia.",
+    "subtitleAr": "نصنع مستقبل العقارات التجارية في المملكة",
     "cta1": "Explore Projects",
-    "cta2": "Contact Us"
+    "cta2": "Contact Us",
+    "scroll": "Scroll"
   },
   "about": {
     "title": "About RRC Saudi",
@@ -24,6 +28,12 @@
       "projects": "Projects Delivered",
       "partners": "Strategic Partners",
       "expertise": "Areas of Expertise"
+    },
+    "statsSuffix": {
+      "years": "+",
+      "projects": "+",
+      "partners": "+",
+      "expertise": ""
     }
   },
   "services": {
@@ -54,12 +64,34 @@
   },
   "projects": {
     "title": "Our Projects",
-    "subtitle": "Discover our portfolio of exceptional real estate developments"
+    "subtitle": "Discover our portfolio of exceptional real estate developments",
+    "categories": {
+      "ALL": "All",
+      "RESIDENTIAL": "Residential",
+      "COMMERCIAL": "Commercial",
+      "MIXED_USE": "Mixed Use",
+      "LUXURY": "Luxury",
+      "MASTER_PLANNED": "Master Planned"
+    },
+    "status": {
+      "PLANNING": "Planning",
+      "UNDER_CONSTRUCTION": "Under Construction",
+      "COMPLETED": "Completed",
+      "LAUNCHED": "Launched",
+      "SOLD_OUT": "Sold Out"
+    }
   },
   "investment": {
     "title": "Investment Opportunities",
     "subtitle": "Partner with us for lucrative real estate investments",
     "description": "RRC Saudi offers carefully curated investment opportunities in Saudi Arabia's rapidly growing real estate market. Benefit from our deep market knowledge, strategic partnerships, and proven track record of delivering exceptional returns.",
+    "highlightsTitle": "Strategic Retail Investment Opportunities",
+    "highlights": [
+      { "label": "Market Growth", "value": "8.5%", "detail": "Annual CAGR" },
+      { "label": "Total Portfolio", "value": "2.4B+", "detail": "SAR Assets" },
+      { "label": "Active Investors", "value": "500+", "detail": "Growing Network" },
+      { "label": "Avg. Returns", "value": "12-15%", "detail": "Annual ROI" }
+    ],
     "benefits": [
       "High-growth market with strong fundamentals",
       "Transparent and ethical investment practices",
@@ -67,11 +99,18 @@
       "Expert management and strategic guidance",
       "Regular performance reporting and updates"
     ],
-    "cta": "Become an Investor"
+    "cta": "Become an Investor",
+    "ctaDetailed": "Contact Investment Team"
   },
   "partners": {
     "title": "Our Partners",
-    "subtitle": "Trusted collaborations driving our success"
+    "subtitle": "Trusted collaborations driving our success",
+    "filters": {
+      "ALL": "All Partners",
+      "DEVELOPER": "Developers",
+      "BRAND": "Brands",
+      "STRATEGIC": "Strategic"
+    }
   },
   "contact": {
     "title": "Get in Touch",
@@ -89,9 +128,13 @@
       "error": "An error occurred. Please try again later."
     },
     "info": {
+      "addressLabel": "Address",
+      "phoneLabel": "Phone",
+      "emailLabel": "Email",
       "address": "Riyadh, Saudi Arabia",
       "phone": "+966 XX XXX XXXX",
-      "email": "info@rrcsaudi.com"
+      "email": "info@rrcsaudi.com",
+      "availability": "We are available Sunday through Thursday to answer your inquiries"
     }
   },
   "footer": {
@@ -99,6 +142,9 @@
     "quickLinks": "Quick Links",
     "services": "Our Services",
     "contact": "Contact Information",
+    "address": "Riyadh, Saudi Arabia",
+    "phone": "+966 XX XXX XXXX",
+    "email": "info@rrcsaudi.com",
     "rights": "All rights reserved.",
     "copyright": "RRC Saudi"
   },

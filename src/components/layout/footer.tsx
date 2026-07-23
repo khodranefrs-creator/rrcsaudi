@@ -39,9 +39,9 @@ export default function Footer() {
             <h3 className="text-sm font-semibold text-gold-500 uppercase tracking-wider">{t("contact")}</h3>
             <ul className="mt-4 space-y-2 text-sm text-white/60">
               <li>{t("contact")}</li>
-              <li>info@rrcsaudi.com</li>
-              <li>+966 XX XXX XXXX</li>
-              <li>Riyadh, Saudi Arabia</li>
+              <li>{t("email")}</li>
+              <li dir="ltr" style={{ unicodeBidi: "isolate" }}>{t("phone")}</li>
+              <li>{t("address")}</li>
             </ul>
           </div>
         </div>

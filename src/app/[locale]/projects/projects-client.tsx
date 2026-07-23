@@ -56,12 +56,12 @@ export function ProjectsClient() {
     <Section title={t("projects.title")} subtitle={t("projects.subtitle")}>
       <div className={cn("mb-8 flex flex-col sm:flex-row gap-4", isAr ? "sm:flex-row-reverse" : "")}>
         <div className="relative flex-1">
-          <Search className={cn("absolute top-1/2 -translate-y-1/2 h-4 w-4 text-charcoal-500", isAr ? "right-3" : "left-3")} />
+          <Search className="absolute top-1/2 -translate-y-1/2 h-4 w-4 text-charcoal-500 start-3" />
           <Input
             placeholder={t("admin.common.search")}
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className={cn(isAr ? "pr-10" : "pl-10")}
+            className="ps-10"
           />
         </div>
         <Select value={categoryFilter} onValueChange={setCategoryFilter}>
@@ -71,7 +71,7 @@ export function ProjectsClient() {
           <SelectContent>
             <SelectItem value="all">{t("admin.common.all")}</SelectItem>
             {categories.map((cat) => (
-              <SelectItem key={cat} value={cat}>{cat}</SelectItem>
+              <SelectItem key={cat} value={cat}>{t(`projects.categories.${cat}`)}</SelectItem>
             ))}
           </SelectContent>
         </Select>
@@ -110,7 +110,7 @@ export function ProjectsClient() {
                 <CardContent className="p-5">
                   <h3 className="text-lg font-semibold">{isAr ? project.titleAr : project.titleEn}</h3>
                   <div className="mt-2 flex items-center text-sm text-charcoal-500">
-                    <MapPin className="h-3.5 w-3.5 mr-1" />
+                    <MapPin className="h-3.5 w-3.5 me-1" />
                     {isAr ? project.locationAr : project.locationEn}
                   </div>
                   <p className="mt-2 text-sm text-charcoal-500 line-clamp-2">
@@ -118,7 +118,7 @@ export function ProjectsClient() {
                   </p>
                   <div className="mt-4 flex items-center text-sm font-medium text-gold-600">
                     {t("common.learnMore")}
-                    <ArrowRight className={cn("ml-1 h-3 w-3", isAr && "rotate-180")} />
+                    <ArrowRight className={cn("ms-1 h-3 w-3", isAr && "rotate-180")} />
                   </div>
                 </CardContent>
               </Card>
