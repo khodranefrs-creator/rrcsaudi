@@ -45,12 +45,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: t("subtitle"),
       locale: locale === "ar" ? "ar_SA" : "en_US",
       siteName: siteT("copyright"),
-      images: [{ url: "/images/og-home.jpg", width: 1200, height: 630 }],
+      images: [{ url: "/images/og-default.svg", width: 1200, height: 630 }],
     },
     twitter: {
       card: "summary_large_image",
       title: `${siteT("copyright")} - ${t("title")}`,
       description: t("subtitle"),
+      images: ["/images/og-default.svg"],
+    },
+    icons: {
+      icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
     },
     alternates: {
       languages: {
@@ -64,6 +68,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params;
   const messages = await getMessages();
+  const schemaT = await getTranslations({ locale, namespace: "footer" });
   const dir = locale === "ar" ? "rtl" : "ltr";
 
   return (
@@ -73,6 +78,27 @@ export default async function LocaleLayout({ children, params }: Props) {
       className={`${inter.variable} ${playfair.variable} ${notoSansArabic.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "RealEstateBusiness",
+              name: "RRC Saudi",
+              alternateName: locale === "ar" ? "آر آر سي السعودية" : "Retail Real Estate Co.",
+              description: schemaT("description"),
+              url: `https://rrcsaudi.com/${locale}`,
+              image: "https://rrcsaudi.com/images/og-default.svg",
+              address: {
+                "@type": "PostalAddress",
+                addressCountry: "SA",
+                addressRegion: "Riyadh",
+              },
+              sameAs: [],
+              knowsLanguage: locale === "ar" ? "ar" : "en",
+            }),
+          }}
+        />
         <NextIntlClientProvider messages={messages} locale={locale}>
           <Navbar />
           <main className="flex-1">{children}</main>

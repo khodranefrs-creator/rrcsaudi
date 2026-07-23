@@ -1,6 +1,7 @@
 import { NextRequest } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { successResponse, errorResponse } from "@/lib/api-helpers";
+import { requireAdmin } from "@/lib/api-auth";
 import { serviceSchema } from "@/lib/zod-schemas";
 
 export const dynamic = "force-dynamic";
@@ -15,6 +16,9 @@ export async function GET() {
 }
 
 export async function POST(request: NextRequest) {
+  const session = await requireAdmin();
+  if (session instanceof Response) return session;
+
   try {
     const body = await request.json();
     const parsed = serviceSchema.parse(body);

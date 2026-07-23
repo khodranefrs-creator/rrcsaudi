@@ -1,11 +1,15 @@
 import { NextRequest } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { successResponse, errorResponse } from "@/lib/api-helpers";
+import { requireAdmin } from "@/lib/api-auth";
 import type { Prisma } from "@prisma/client";
 
 export const dynamic = "force-dynamic";
 
 export async function GET() {
+  const session = await requireAdmin();
+  if (session instanceof Response) return session;
+
   try {
     const settings = await prisma.siteSetting.findMany();
     const map: Record<string, unknown> = {};
@@ -19,6 +23,9 @@ export async function GET() {
 }
 
 export async function PUT(request: NextRequest) {
+  const session = await requireAdmin();
+  if (session instanceof Response) return session;
+
   try {
     const body = await request.json();
     const results: Record<string, unknown> = {};

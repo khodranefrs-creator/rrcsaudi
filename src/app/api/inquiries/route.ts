@@ -1,11 +1,15 @@
 import { NextRequest } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { successResponse, errorResponse } from "@/lib/api-helpers";
+import { requireAdmin } from "@/lib/api-auth";
 import { inquirySchema } from "@/lib/zod-schemas";
 
 export const dynamic = "force-dynamic";
 
 export async function GET() {
+  const session = await requireAdmin();
+  if (session instanceof Response) return session;
+
   try {
     const inquiries = await prisma.inquiry.findMany({ orderBy: { createdAt: "desc" } });
     return successResponse(inquiries);

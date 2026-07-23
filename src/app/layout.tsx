@@ -2,9 +2,15 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "RRC Saudi - Real Estate Development & Investment",
+  title: {
+    default: "RRC Saudi - Real Estate Development & Investment",
+    template: "%s | RRC Saudi",
+  },
   description:
     "RRC Saudi delivers world-class real estate development and investment solutions across the Kingdom of Saudi Arabia.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({

@@ -1,6 +1,7 @@
 import { NextRequest } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { successResponse, errorResponse } from "@/lib/api-helpers";
+import { requireAdmin } from "@/lib/api-auth";
 import { partnerSchema } from "@/lib/zod-schemas";
 
 export const dynamic = "force-dynamic";
@@ -8,6 +9,10 @@ export const dynamic = "force-dynamic";
 export async function GET(request: NextRequest) {
   try {
     const isPublic = request.nextUrl.searchParams.get("public") === "true";
+    if (!isPublic) {
+      const session = await requireAdmin();
+      if (session instanceof Response) return session;
+    }
     const where = isPublic ? { published: true, verified: true } : {};
     const partners = await prisma.partner.findMany({
       where,
@@ -20,6 +25,9 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
+  const session = await requireAdmin();
+  if (session instanceof Response) return session;
+
   try {
     const body = await request.json();
     const parsed = partnerSchema.parse(body);

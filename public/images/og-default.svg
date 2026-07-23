@@ -1,0 +1,18 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0A1628"/>
+      <stop offset="100%" style="stop-color:#1B2A4A"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#C9A96E"/>
+      <stop offset="100%" style="stop-color:#E8D5A3"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="50" y="50" width="1100" height="530" fill="none" stroke="url(#gold)" stroke-width="1" opacity="0.3" rx="8"/>
+  <text x="600" y="280" font-family="Georgia, serif" font-size="72" font-weight="bold" fill="#C9A96E" text-anchor="middle" letter-spacing="4">RRC</text>
+  <text x="600" y="340" font-family="Georgia, serif" font-size="28" fill="#E8D5A3" text-anchor="middle" letter-spacing="8" opacity="0.8">SAUDI</text>
+  <line x1="520" y1="370" x2="680" y2="370" stroke="#C9A96E" stroke-width="1" opacity="0.4"/>
+  <text x="600" y="410" font-family="Arial, sans-serif" font-size="16" fill="#C9A96E" text-anchor="middle" opacity="0.5" letter-spacing="3">REAL ESTATE DEVELOPMENT &amp; INVESTMENT</text>
+</svg>
