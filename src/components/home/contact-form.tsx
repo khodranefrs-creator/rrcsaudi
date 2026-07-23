@@ -55,6 +55,8 @@ export default function ContactForm() {
 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [contactSettings, setContactSettings] = useState<ContactSettings | null>(null)
+  const resolvedPhone = contactSettings?.phone || contactT("phone")
+  const resolvedEmail = contactSettings?.email || contactT("email")
 
   useEffect(() => {
     fetch("/api/settings")
@@ -221,68 +223,37 @@ export default function ContactForm() {
               {t("title")}
             </h3>
             <div className="space-y-4">
-              {(() => {
-                const addr = contactSettings?.addressEn || contactSettings?.addressAr || contactT("address")
-                const ph = contactSettings?.phone || contactT("phone")
-                const em = contactSettings?.email || contactT("email")
-                const hasAny = addr || ph || em
-                if (!hasAny) {
-                  return (
-                    <div className="rounded-lg bg-gradient-light border border-gold-500/20 p-5 text-center">
-                      <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-gold-500/10">
-                        <MapPin className="h-5 w-5 text-gold-500" />
-                      </div>
-                      <p className="text-sm font-medium text-charcoal-700">
-                        {contactT("emptyState")}
-                      </p>
-                      <p className="mt-1 text-xs text-muted-foreground">
-                        {contactT("emptyDesc")}
-                      </p>
-                    </div>
-                  )
-                }
-                return (
-                  <>
-                    {addr && (
-                      <div className="flex items-start gap-3">
-                        <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-gold-500" />
-                        <div>
-                          <p className="text-sm font-medium text-charcoal-900">
-                            {contactT("addressLabel")}
-                          </p>
-                          <p className="text-sm text-charcoal-500">
-                            {contactSettings?.addressAr && isRtl ? contactSettings.addressAr : contactSettings?.addressEn ? contactSettings.addressEn : contactT("address")}
-                          </p>
-                        </div>
-                      </div>
-                    )}
-                    {ph && (
-                      <div className="flex items-start gap-3">
-                        <Phone className="mt-0.5 h-5 w-5 shrink-0 text-gold-500" />
-                        <div>
-                          <p className="text-sm font-medium text-charcoal-900">
-                            {contactT("phoneLabel")}
-                          </p>
-                          <p className="text-sm text-charcoal-500" dir="ltr" style={{ unicodeBidi: "isolate" }}>
-                            {ph}
-                          </p>
-                        </div>
-                      </div>
-                    )}
-                    {em && (
-                      <div className="flex items-start gap-3">
-                        <Mail className="mt-0.5 h-5 w-5 shrink-0 text-gold-500" />
-                        <div>
-                          <p className="text-sm font-medium text-charcoal-900">
-                            {contactT("emailLabel")}
-                          </p>
-                          <p className="text-sm text-charcoal-500">{em}</p>
-                        </div>
-                      </div>
-                    )}
-                  </>
-                )
-              })()}
+              <div className="flex items-start gap-3">
+                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-gold-500" />
+                <div>
+                  <p className="text-sm font-medium text-charcoal-900">
+                    {contactT("addressLabel")}
+                  </p>
+                  <p className="text-sm text-charcoal-500">
+                    {contactSettings?.addressAr && isRtl ? contactSettings.addressAr : contactSettings?.addressEn ? contactSettings.addressEn : contactT("address")}
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <Phone className="mt-0.5 h-5 w-5 shrink-0 text-gold-500" />
+                <div>
+                  <p className="text-sm font-medium text-charcoal-900">
+                    {contactT("phoneLabel")}
+                  </p>
+                  <p className="text-sm text-charcoal-500" dir="ltr" style={{ unicodeBidi: "isolate" }}>
+                    {resolvedPhone}
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <Mail className="mt-0.5 h-5 w-5 shrink-0 text-gold-500" />
+                <div>
+                  <p className="text-sm font-medium text-charcoal-900">
+                    {contactT("emailLabel")}
+                  </p>
+                  <p className="text-sm text-charcoal-500">{resolvedEmail}</p>
+                </div>
+              </div>
             </div>
           </div>
 

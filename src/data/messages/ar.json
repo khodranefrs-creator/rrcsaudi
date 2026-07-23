@@ -137,12 +137,10 @@
       "addressLabel": "العنوان",
       "phoneLabel": "الهاتف",
       "emailLabel": "البريد الإلكتروني",
-      "address": "",
-      "phone": "",
-      "email": "",
-      "availability": "نحن متواجدون للإجابة على استفساراتكم من الأحد إلى الخميس",
-      "emptyState": "سيتم تحديث معلومات الاتصال قريباً",
-      "emptyDesc": "سيكون فريقنا متاحاً لمساعدتك قريباً"
+      "address": "الرياض، المملكة العربية السعودية",
+      "phone": "+966 XX XXX XXXX",
+      "email": "info@rrcsaudi.com",
+      "availability": "نحن متواجدون للإجابة على استفساراتكم من الأحد إلى الخميس"
     }
   },
   "home": {
@@ -154,9 +152,9 @@
     "quickLinks": "روابط سريعة",
     "services": "خدماتنا",
     "contact": "معلومات الاتصال",
-    "address": "",
-    "phone": "",
-    "email": "",
+    "address": "الرياض، المملكة العربية السعودية",
+    "phone": "+966 XX XXX XXXX",
+    "email": "info@rrcsaudi.com",
     "rights": "جميع الحقوق محفوظة.",
     "copyright": "آر آر سي السعودية"
   },

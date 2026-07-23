@@ -137,12 +137,10 @@
       "addressLabel": "Address",
       "phoneLabel": "Phone",
       "emailLabel": "Email",
-      "address": "",
-      "phone": "",
-      "email": "",
-      "availability": "We are available Sunday through Thursday to answer your inquiries",
-      "emptyState": "Contact information will be updated soon",
-      "emptyDesc": "Our team will be available to assist you shortly"
+      "address": "Riyadh, Kingdom of Saudi Arabia",
+      "phone": "+966 XX XXX XXXX",
+      "email": "info@rrcsaudi.com",
+      "availability": "We are available Sunday through Thursday to answer your inquiries"
     }
   },
   "home": {
@@ -154,9 +152,9 @@
     "quickLinks": "Quick Links",
     "services": "Our Services",
     "contact": "Contact Information",
-    "address": "",
-    "phone": "",
-    "email": "",
+    "address": "Riyadh, Kingdom of Saudi Arabia",
+    "phone": "+966 XX XXX XXXX",
+    "email": "info@rrcsaudi.com",
     "rights": "All rights reserved.",
     "copyright": "RRC Saudi"
   },
