@@ -46,7 +46,7 @@ export function ProjectDetailClient({ project, locale }: Props) {
             href={`/${locale}/projects`}
             className="inline-flex items-center text-sm text-white/60 hover:text-gold-400 transition-colors"
           >
-            <ArrowLeft className={cn("h-4 w-4 mr-2", isAr && "rotate-180")} />
+            <ArrowLeft className={cn("h-4 w-4 me-2", isAr && "rotate-180")} />
             {t("common.back")}
           </Link>
           <div className={cn("mt-4 flex flex-wrap items-start gap-4 justify-between")}>
@@ -125,10 +125,10 @@ export function ProjectDetailClient({ project, locale }: Props) {
                 <h3 className="font-semibold">{t("contact.title")}</h3>
                 <div className="space-y-2 text-sm text-muted-foreground">
                   <div className="flex items-center gap-2">
-                    <Phone className="h-4 w-4" /> +966 XX XXX XXXX
+                     <Phone className="h-4 w-4" /> <span dir="ltr" style={{ unicodeBidi: "isolate" }}>{t("contact.info.phone")}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Mail className="h-4 w-4" /> info@rrcsaudi.com
+                     <Mail className="h-4 w-4" /> {t("contact.info.email")}
                   </div>
                 </div>
                 <Button asChild variant="outline" className="w-full">

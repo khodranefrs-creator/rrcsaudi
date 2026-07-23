@@ -117,7 +117,7 @@ export default function AdminHeader({ onMenuToggle }: AdminHeaderProps) {
       <div className="relative" ref={dropdownRef}>
         <button
           onClick={() => setDropdownOpen(!dropdownOpen)}
-          className="flex items-center gap-3 p-1.5 pr-3 rounded-lg hover:bg-white/5 transition-colors"
+          className="flex items-center gap-3 p-1.5 pe-3 rounded-lg hover:bg-white/5 transition-colors"
         >
           <div className="h-8 w-8 rounded-full bg-gold-500/20 flex items-center justify-center text-gold-400 text-sm font-bold">
             {user.avatar ? (
@@ -153,7 +153,7 @@ export default function AdminHeader({ onMenuToggle }: AdminHeaderProps) {
               transition={{ duration: 0.15 }}
               className={cn(
                 "absolute top-full mt-2 w-56 bg-navy-800 rounded-xl border border-gold-500/10 shadow-lux-xl overflow-hidden",
-                isRtl ? "left-0" : "right-0"
+                "end-0"
               )}
             >
               <div className="p-2 space-y-1">

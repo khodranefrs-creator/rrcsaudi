@@ -72,10 +72,8 @@ export default function AdminSidebar({ open, onClose }: AdminSidebarProps) {
       <aside
         dir={isRtl ? "rtl" : "ltr"}
         className={cn(
-          "fixed top-0 bottom-0 z-50 w-64 bg-navy-900 border-r border-gold-500/10 flex flex-col transition-transform duration-300 lg:translate-x-0 lg:static lg:z-auto",
-          isRtl
-            ? "left-0 border-l border-r-0"
-            : "left-0",
+          "fixed top-0 bottom-0 z-50 w-64 bg-navy-900 border-e border-gold-500/10 flex flex-col transition-transform duration-300 lg:translate-x-0 lg:static lg:z-auto",
+          "start-0",
           open
             ? "translate-x-0"
             : isRtl
@@ -127,7 +125,7 @@ export default function AdminSidebar({ open, onClose }: AdminSidebarProps) {
                     layoutId="adminActiveIndicator"
                     className={cn(
                       "absolute top-1/2 -translate-y-1/2 w-1 h-5 bg-gold-500 rounded-full",
-                      isRtl ? "right-0" : "left-0"
+                      "start-0"
                     )}
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   />

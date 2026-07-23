@@ -35,7 +35,7 @@ export function ServiceDetailClient({ service, locale }: Props) {
             href={`/${locale}/services`}
             className="inline-flex items-center text-sm text-white/60 hover:text-gold-400 transition-colors"
           >
-            <ArrowLeft className={cn("h-4 w-4 mr-2", isAr && "rotate-180")} />
+            <ArrowLeft className={cn("h-4 w-4 me-2", isAr && "rotate-180")} />
             {t("common.back")}
           </Link>
           <div className="mt-4 flex items-center gap-4">

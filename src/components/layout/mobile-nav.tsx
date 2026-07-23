@@ -79,7 +79,7 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
             dir={isRtl ? "rtl" : "ltr"}
             className={cn(
               "absolute top-0 bottom-0 w-full max-w-sm bg-navy-900 shadow-lux-xl",
-              isRtl ? "left-0" : "right-0"
+              "end-0"
             )}
             variants={panelVariants}
             initial="hidden"
@@ -124,7 +124,7 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
               ))}
             </nav>
 
-            <div className="absolute bottom-0 left-0 right-0 p-6 border-t border-gold-500/20 space-y-4">
+            <div className="absolute bottom-0 inset-x-0 p-6 border-t border-gold-500/20 space-y-4">
               <div className="flex items-center justify-center gap-2">
                 <button
                   onClick={() => switchLocale("en")}

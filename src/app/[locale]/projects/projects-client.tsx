@@ -100,7 +100,7 @@ export function ProjectsClient() {
               <Card className="group overflow-hidden h-full transition-all duration-300 hover:shadow-lux-lg hover:-translate-y-1 cursor-pointer">
                 <div className="relative aspect-[16/10] overflow-hidden bg-charcoal-100">
                   <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent z-10" />
-                  <div className="absolute top-3 left-3 z-20">
+                  <div className="absolute top-3 start-3 z-20">
                     <Badge variant={statusVariant[project.status]}>{t(statusLabelKey[project.status])}</Badge>
                   </div>
                   <div className="w-full h-full flex items-center justify-center text-charcoal-300">
