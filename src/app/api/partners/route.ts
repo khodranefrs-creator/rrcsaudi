@@ -5,9 +5,14 @@ import { partnerSchema } from "@/lib/zod-schemas";
 
 export const dynamic = "force-dynamic";
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
-    const partners = await prisma.partner.findMany({ orderBy: { createdAt: "desc" } });
+    const isPublic = request.nextUrl.searchParams.get("public") === "true";
+    const where = isPublic ? { published: true, verified: true } : {};
+    const partners = await prisma.partner.findMany({
+      where,
+      orderBy: { createdAt: "desc" },
+    });
     return successResponse(partners);
   } catch {
     return errorResponse("Failed to fetch partners", 500);

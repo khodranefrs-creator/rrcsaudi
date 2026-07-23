@@ -84,14 +84,9 @@
   "investment": {
     "title": "Investment Opportunities",
     "subtitle": "Partner with us for lucrative real estate investments",
-    "description": "RRC Saudi offers carefully curated investment opportunities in Saudi Arabia's rapidly growing real estate market. Benefit from our deep market knowledge, strategic partnerships, and proven track record of delivering exceptional returns.",
+    "description": "RRC Saudi offers carefully curated investment opportunities in Saudi Arabia's rapidly growing real estate market. Benefit from our deep market knowledge, strategic partnerships, and commitment to creating value for our partners.",
     "highlightsTitle": "Strategic Retail Investment Opportunities",
-    "highlights": [
-      { "label": "Market Growth", "value": "8.5%", "detail": "Annual CAGR" },
-      { "label": "Total Portfolio", "value": "2.4B+", "detail": "SAR Assets" },
-      { "label": "Active Investors", "value": "500+", "detail": "Growing Network" },
-      { "label": "Avg. Returns", "value": "12-15%", "detail": "Annual ROI" }
-    ],
+    "emptyState": "Investment data coming soon",
     "benefits": [
       "High-growth market with strong fundamentals",
       "Transparent and ethical investment practices",
@@ -131,9 +126,9 @@
       "addressLabel": "Address",
       "phoneLabel": "Phone",
       "emailLabel": "Email",
-      "address": "Riyadh, Saudi Arabia",
-      "phone": "+966 XX XXX XXXX",
-      "email": "info@rrcsaudi.com",
+      "address": "",
+      "phone": "",
+      "email": "",
       "availability": "We are available Sunday through Thursday to answer your inquiries"
     }
   },
@@ -142,9 +137,9 @@
     "quickLinks": "Quick Links",
     "services": "Our Services",
     "contact": "Contact Information",
-    "address": "Riyadh, Saudi Arabia",
-    "phone": "+966 XX XXX XXXX",
-    "email": "info@rrcsaudi.com",
+    "address": "",
+    "phone": "",
+    "email": "",
     "rights": "All rights reserved.",
     "copyright": "RRC Saudi"
   },

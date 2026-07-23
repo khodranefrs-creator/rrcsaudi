@@ -123,6 +123,7 @@ model Project {
   totalArea       String?
   completionDate  DateTime?
   featured        Boolean         @default(false)
+  isDemo          Boolean         @default(true)
   investmentInfo  Json            @default("{}")
   published       Boolean         @default(false)
   createdAt       DateTime        @default(now())
@@ -145,6 +146,8 @@ model Service {
   descriptionEn String  @db.Text
   descriptionAr String  @db.Text
   icon        String?
+  featuresEn  Json     @default("[]")
+  featuresAr  Json     @default("[]")
   order       Int      @default(0)
   published   Boolean  @default(false)
   createdAt   DateTime @default(now())
@@ -163,6 +166,7 @@ model Partner {
   website   String?
   type      PartnerType  @default(DEVELOPER)
   published Boolean      @default(false)
+  verified  Boolean      @default(false)
   createdAt DateTime     @default(now())
   updatedAt DateTime     @updatedAt
 
@@ -235,6 +239,24 @@ model Media {
 
   @@index([projectId])
   @@index([type])
+}
+
+model InvestmentMetric {
+  id          String   @id @default(cuid())
+  titleEn     String
+  titleAr     String
+  value       String
+  descriptionEn String?
+  descriptionAr String?
+  source      String?
+  icon        String?
+  order       Int      @default(0)
+  published   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([published])
+  @@index([order])
 }
 
 model SiteSetting {

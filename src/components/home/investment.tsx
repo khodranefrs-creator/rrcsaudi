@@ -1,13 +1,26 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import { useLocale, useTranslations } from "next-intl"
 import { motion } from "framer-motion"
-import { Check, ArrowUpRight, TrendingUp, Building2, Users, BarChart3 } from "lucide-react"
+import { Check, ArrowUpRight, TrendingUp, Building2, Users, BarChart3, BarChartBig } from "lucide-react"
 import { Section } from "@/components/ui/section"
 import { Button } from "@/components/ui/button"
 
-const highlightIcons = [TrendingUp, Building2, Users, BarChart3]
+type Metric = {
+  id: string
+  titleEn: string
+  titleAr: string
+  value: string
+  descriptionEn: string | null
+  descriptionAr: string | null
+  icon: string | null
+}
+
+const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  TrendingUp, Building2, Users, BarChart3, BarChartBig,
+}
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -25,8 +38,21 @@ const itemVariants = {
 export default function Investment() {
   const locale = useLocale()
   const t = useTranslations("investment")
-  const highlights = t.raw("highlights") as { label: string; value: string; detail: string }[]
   const benefits = t.raw("benefits") as string[]
+  const [metrics, setMetrics] = useState<Metric[]>([])
+  const [loaded, setLoaded] = useState(false)
+
+  useEffect(() => {
+    fetch("/api/investment-metrics")
+      .then((r) => r.json())
+      .then((res) => {
+        if (res.success && Array.isArray(res.data)) {
+          setMetrics(res.data)
+        }
+      })
+      .catch(() => {})
+      .finally(() => setLoaded(true))
+  }, [])
 
   return (
     <Section className="bg-white">
@@ -51,25 +77,39 @@ export default function Investment() {
             {t("description")}
           </motion.p>
 
-          <motion.div
-            className="grid grid-cols-2 gap-4"
-            variants={itemVariants}
-          >
-            {highlights.map((h, i) => {
-              const Icon = highlightIcons[i]
-              return (
-                <div
-                  key={h.label}
-                  className="rounded-xl border border-gold-500/20 bg-cream p-4"
-                >
-                  <Icon className="mb-2 h-5 w-5 text-gold-500" />
-                  <div className="text-2xl font-bold text-navy-900" dir="ltr">{h.value}</div>
-                  <div className="text-xs text-charcoal-500">{h.label}</div>
-                  <div className="text-xs text-gold-600">{h.detail}</div>
-                </div>
-              )
-            })}
-          </motion.div>
+          {loaded && metrics.length === 0 && (
+            <motion.div
+              className="rounded-xl border border-dashed border-gold-500/30 bg-cream/50 p-8 text-center"
+              variants={itemVariants}
+            >
+              <BarChartBig className="mx-auto h-10 w-10 text-gold-400/60" />
+              <p className="mt-3 text-sm text-charcoal-500">{t("emptyState")}</p>
+            </motion.div>
+          )}
+
+          {metrics.length > 0 && (
+            <motion.div
+              className="grid grid-cols-2 gap-4"
+              variants={itemVariants}
+            >
+              {metrics.map((m, i) => {
+                const Icon = m.icon ? iconMap[m.icon] : iconMap[Object.keys(iconMap)[i % 4]]
+                const label = locale === "ar" ? m.titleAr : m.titleEn
+                const detail = locale === "ar" ? m.descriptionAr : m.descriptionEn
+                return (
+                  <div
+                    key={m.id}
+                    className="rounded-xl border border-gold-500/20 bg-cream p-4"
+                  >
+                    {Icon && <Icon className="mb-2 h-5 w-5 text-gold-500" />}
+                    <div className="text-2xl font-bold text-navy-900" dir="ltr">{m.value}</div>
+                    <div className="text-xs text-charcoal-500">{label}</div>
+                    {detail && <div className="text-xs text-gold-600">{detail}</div>}
+                  </div>
+                )
+              })}
+            </motion.div>
+          )}
 
           <motion.ul className="space-y-3" variants={itemVariants}>
             {benefits.map((benefit) => (

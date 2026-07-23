@@ -8,6 +8,10 @@
     "start": "next start",
     "lint": "eslint",
     "vercel-build": "prisma generate && next build",
+    "db:migrate": "prisma migrate dev",
+    "db:seed": "tsx prisma/seed.ts",
+    "db:reset": "prisma migrate reset --force",
+    "db:studio": "prisma studio",
     "postinstall": "prisma generate"
   },
   "dependencies": {
@@ -29,14 +33,14 @@
     "clsx": "^2.1.1",
     "dotenv": "^17.4.2",
     "email-validator": "^2.0.4",
-    "prisma": "^7.9.0",
     "framer-motion": "^12.42.2",
     "gsap": "^3.15.0",
-    "pg": "^8.22.0",
     "lucide-react": "^1.26.0",
     "next": "^16.2.11",
     "next-auth": "^5.0.0-beta.32",
     "next-intl": "^4.13.4",
+    "pg": "^8.22.0",
+    "prisma": "^7.9.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-hook-form": "^7.82.0",
@@ -55,6 +59,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.2.11",
     "tailwindcss": "^4",
+    "tsx": "^4.23.1",
     "typescript": "^5"
   }
 }

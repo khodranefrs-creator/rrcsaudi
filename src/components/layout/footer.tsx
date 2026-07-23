@@ -1,14 +1,40 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+
+type ContactSettings = {
+  phone: string;
+  email: string;
+  addressEn: string;
+  addressAr: string;
+};
 
 export default function Footer() {
   const t = useTranslations("footer");
   const navT = useTranslations("nav");
   const params = useParams();
   const locale = params.locale as string;
+  const [contactSettings, setContactSettings] = useState<ContactSettings | null>(null);
+
+  useEffect(() => {
+    fetch("/api/settings")
+      .then((r) => r.json())
+      .then((res) => {
+        if (res.success && res.data?.contact) {
+          setContactSettings(res.data.contact as ContactSettings);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  const phone = contactSettings?.phone || t("phone");
+  const email = contactSettings?.email || t("email");
+  const address = locale === "ar"
+    ? contactSettings?.addressAr || t("address")
+    : contactSettings?.addressEn || t("address");
 
   return (
     <footer className="bg-navy-900 text-white">
@@ -38,10 +64,9 @@ export default function Footer() {
           <div>
             <h3 className="text-sm font-semibold text-gold-500 uppercase tracking-wider">{t("contact")}</h3>
             <ul className="mt-4 space-y-2 text-sm text-white/60">
-              <li>{t("contact")}</li>
-              <li>{t("email")}</li>
-              <li dir="ltr" style={{ unicodeBidi: "isolate" }}>{t("phone")}</li>
-              <li>{t("address")}</li>
+              {address && <li>{address}</li>}
+              {email && <li>{email}</li>}
+              {phone && <li dir="ltr" style={{ unicodeBidi: "isolate" }}>{phone}</li>}
             </ul>
           </div>
         </div>

@@ -124,12 +124,16 @@ export function ProjectDetailClient({ project, locale }: Props) {
               <CardContent className="p-6 space-y-4">
                 <h3 className="font-semibold">{t("contact.title")}</h3>
                 <div className="space-y-2 text-sm text-muted-foreground">
-                  <div className="flex items-center gap-2">
-                     <Phone className="h-4 w-4" /> <span dir="ltr" style={{ unicodeBidi: "isolate" }}>{t("contact.info.phone")}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                     <Mail className="h-4 w-4" /> {t("contact.info.email")}
-                  </div>
+                  {t("contact.info.phone") && (
+                    <div className="flex items-center gap-2">
+                       <Phone className="h-4 w-4" /> <span dir="ltr" style={{ unicodeBidi: "isolate" }}>{t("contact.info.phone")}</span>
+                    </div>
+                  )}
+                  {t("contact.info.email") && (
+                    <div className="flex items-center gap-2">
+                       <Mail className="h-4 w-4" /> {t("contact.info.email")}
+                    </div>
+                  )}
                 </div>
                 <Button asChild variant="outline" className="w-full">
                   <Link href={`/${locale}/contact`}>{t("contact.subtitle")}</Link>

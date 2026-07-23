@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useLocale, useTranslations } from "next-intl"
 import { motion } from "framer-motion"
 import { MapPin, Phone, Mail, Send, Loader2 } from "lucide-react"
@@ -39,6 +39,13 @@ const interestOptions = [
   { value: "General", labelEn: "General", labelAr: "عام" },
 ]
 
+type ContactSettings = {
+  phone: string
+  email: string
+  addressEn: string
+  addressAr: string
+}
+
 export default function ContactForm() {
   const locale = useLocale()
   const isRtl = locale === "ar"
@@ -47,6 +54,18 @@ export default function ContactForm() {
   const contactT = useTranslations("contact.info")
 
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [contactSettings, setContactSettings] = useState<ContactSettings | null>(null)
+
+  useEffect(() => {
+    fetch("/api/settings")
+      .then((r) => r.json())
+      .then((res) => {
+        if (res.success && res.data?.contact) {
+          setContactSettings(res.data.contact as ContactSettings)
+        }
+      })
+      .catch(() => {})
+  }, [])
 
   const {
     register,
@@ -202,33 +221,43 @@ export default function ContactForm() {
               {t("title")}
             </h3>
             <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-gold-500" />
-                <div>
-                  <p className="text-sm font-medium text-charcoal-900">
-                    {contactT("addressLabel")}
-                  </p>
-                  <p className="text-sm text-charcoal-500">{contactT("address")}</p>
+              {(contactSettings?.addressEn || contactT("address")) && (
+                <div className="flex items-start gap-3">
+                  <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-gold-500" />
+                  <div>
+                    <p className="text-sm font-medium text-charcoal-900">
+                      {contactT("addressLabel")}
+                    </p>
+                    <p className="text-sm text-charcoal-500">
+                      {isRtl && contactSettings?.addressAr ? contactSettings.addressAr : !isRtl && contactSettings?.addressEn ? contactSettings.addressEn : contactT("address")}
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <Phone className="mt-0.5 h-5 w-5 shrink-0 text-gold-500" />
-                <div>
-                  <p className="text-sm font-medium text-charcoal-900">
-                    {contactT("phoneLabel")}
-                  </p>
-                  <p className="text-sm text-charcoal-500" dir="ltr" style={{ unicodeBidi: "isolate" }}>{contactT("phone")}</p>
+              )}
+              {(contactSettings?.phone || contactT("phone")) && (
+                <div className="flex items-start gap-3">
+                  <Phone className="mt-0.5 h-5 w-5 shrink-0 text-gold-500" />
+                  <div>
+                    <p className="text-sm font-medium text-charcoal-900">
+                      {contactT("phoneLabel")}
+                    </p>
+                    <p className="text-sm text-charcoal-500" dir="ltr" style={{ unicodeBidi: "isolate" }}>
+                      {contactSettings?.phone || contactT("phone")}
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <Mail className="mt-0.5 h-5 w-5 shrink-0 text-gold-500" />
-                <div>
-                  <p className="text-sm font-medium text-charcoal-900">
-                    {contactT("emailLabel")}
-                  </p>
-                  <p className="text-sm text-charcoal-500">{contactT("email")}</p>
+              )}
+              {(contactSettings?.email || contactT("email")) && (
+                <div className="flex items-start gap-3">
+                  <Mail className="mt-0.5 h-5 w-5 shrink-0 text-gold-500" />
+                  <div>
+                    <p className="text-sm font-medium text-charcoal-900">
+                      {contactT("emailLabel")}
+                    </p>
+                    <p className="text-sm text-charcoal-500">{contactSettings?.email || contactT("email")}</p>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
 
