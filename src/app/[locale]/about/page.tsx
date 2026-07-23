@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: Props) {
     openGraph: {
       title: t("title"),
       description: t("description"),
-      images: [{ url: "/images/og-about.jpg", width: 1200, height: 630 }],
+      images: [{ url: "/images/og-default.svg", width: 1200, height: 630 }],
     },
   };
 }
@@ -33,22 +33,28 @@ export default async function AboutPage({ params }: Props) {
       <section className="py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-2 items-center">
-            <div className="aspect-[4/3] rounded-xl bg-charcoal-100 flex items-center justify-center">
-              <span className="text-charcoal-300 text-lg">RRC Saudi</span>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-gradient-navy flex items-center justify-center">
+              <div
+                className="absolute inset-0 opacity-20"
+                style={{
+                  backgroundImage: `
+                    linear-gradient(90deg, rgba(201,169,110,0.12) 1px, transparent 1px),
+                    linear-gradient(0deg, rgba(201,169,110,0.12) 1px, transparent 1px)
+                  `,
+                  backgroundSize: "40px 40px, 40px 40px",
+                }}
+              />
+              <span className="relative text-2xl font-bold text-white/40">RRC Saudi</span>
             </div>
             <div>
               <h2 className="text-3xl font-bold">{t("title")}</h2>
               <p className="mt-4 text-muted-foreground leading-relaxed">{t("description")}</p>
-              <div className="mt-8 grid grid-cols-2 gap-6">
+              <div className="mt-8 grid grid-cols-2 gap-4">
                 {(["years", "projects", "partners", "expertise"] as const).map((key) => (
-                  <div key={key} className="text-center p-4 rounded-lg bg-gradient-light">
-                    <div className="text-2xl font-bold text-gold-600">
-                      {key === "years" && "15+"}
-                      {key === "projects" && "50+"}
-                      {key === "partners" && "30+"}
-                      {key === "expertise" && "5"}
+                  <div key={key} className="rounded-lg bg-gradient-light p-4 text-center">
+                    <div className="text-sm font-semibold text-charcoal-700">
+                      {t(`stats.${key}`)}
                     </div>
-                    <div className="mt-1 text-sm text-muted-foreground">{t(`stats.${key}`)}</div>
                   </div>
                 ))}
               </div>
@@ -57,23 +63,12 @@ export default async function AboutPage({ params }: Props) {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-gradient-light">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center">Our Team</h2>
-          <p className="mt-4 text-muted-foreground text-center max-w-xl mx-auto">
-            Meet the experts behind our success
+      <section className="bg-gradient-light py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold text-navy-900">{t("teamTitle")}</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground leading-relaxed">
+            {t("teamDescription")}
           </p>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="text-center p-6 rounded-xl bg-white shadow-sm">
-                <div className="mx-auto h-24 w-24 rounded-full bg-charcoal-100 flex items-center justify-center">
-                  <span className="text-charcoal-300 text-lg">Photo</span>
-                </div>
-                <h3 className="mt-4 font-semibold">Team Member {i}</h3>
-                <p className="text-sm text-muted-foreground">Position</p>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
     </>

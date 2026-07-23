@@ -2,15 +2,19 @@
 
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { MessageSquare } from "lucide-react";
+import { DataTable } from "@/components/admin/data-table";
+import { useAdminFetch } from "@/lib/use-admin-fetch";
 
-const sampleInquiries = [
-  { id: "1", name: "Ahmed Al-Rashid", email: "ahmed@example.com", type: "INVESTOR", status: "NEW", message: "I am interested in investment opportunities in Riyadh.", date: "2026-07-23" },
-  { id: "2", name: "Sara Al-Otaibi", email: "sara@example.com", type: "GENERAL", status: "READ", message: "Please send me information about your services.", date: "2026-07-22" },
-  { id: "3", name: "Khalid Al-Ghamdi", email: "khalid@example.com", type: "BRAND", status: "REPLIED", message: "Partnership inquiry for our brand.", date: "2026-07-20" },
-];
+interface Inquiry {
+  id: string;
+  name: string;
+  email: string;
+  type: string;
+  status: string;
+  message: string;
+}
 
 const statusColors: Record<string, "default" | "secondary" | "gold" | "outline"> = {
   NEW: "default",
@@ -23,6 +27,8 @@ export default function AdminInquiriesPage() {
   const { data: session } = useSession();
   if (!session) redirect("/en/admin/login");
 
+  const { data: inquiries, loading, error, refetch } = useAdminFetch<Inquiry>("/api/inquiries");
+
   return (
     <div className="p-6 space-y-6">
       <div>
@@ -30,13 +36,17 @@ export default function AdminInquiriesPage() {
         <p className="text-muted-foreground">Manage investor and partner inquiries</p>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>All Inquiries</CardTitle>
-        </CardHeader>
-        <CardContent>
+      <DataTable
+        data={inquiries}
+        isLoading={loading}
+        error={error}
+        title="All Inquiries"
+        onRetry={refetch}
+        emptyMessage="No inquiries received yet. They will appear here once users submit the inquiry form."
+      >
+        {(data) => (
           <div className="space-y-4">
-            {sampleInquiries.map((inq) => (
+            {data.map((inq) => (
               <div key={inq.id} className="border rounded-lg p-4 hover:shadow-sm transition-shadow">
                 <div className="flex items-start justify-between">
                   <div className="flex items-start gap-3">
@@ -48,15 +58,15 @@ export default function AdminInquiriesPage() {
                     </div>
                   </div>
                   <div className="flex items-center gap-2 shrink-0">
-                    <Badge variant={statusColors[inq.status]}>{inq.status}</Badge>
+                    <Badge variant={statusColors[inq.status] || "outline"}>{inq.status}</Badge>
                     <span className="text-xs text-muted-foreground">{inq.type}</span>
                   </div>
                 </div>
               </div>
             ))}
           </div>
-        </CardContent>
-      </Card>
+        )}
+      </DataTable>
     </div>
   );
 }

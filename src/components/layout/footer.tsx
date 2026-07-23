@@ -36,6 +36,8 @@ export default function Footer() {
     ? contactSettings?.addressAr || t("address")
     : contactSettings?.addressEn || t("address");
 
+  const hasContactInfo = phone || email || address;
+
   return (
     <footer className="bg-navy-900 text-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
@@ -61,14 +63,16 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-          <div>
-            <h3 className="text-sm font-semibold text-gold-500 uppercase tracking-wider">{t("contact")}</h3>
-            <ul className="mt-4 space-y-2 text-sm text-white/60">
-              {address && <li>{address}</li>}
-              {email && <li>{email}</li>}
-              {phone && <li dir="ltr" style={{ unicodeBidi: "isolate" }}>{phone}</li>}
-            </ul>
-          </div>
+          {hasContactInfo && (
+            <div>
+              <h3 className="text-sm font-semibold text-gold-500 uppercase tracking-wider">{t("contact")}</h3>
+              <ul className="mt-4 space-y-2 text-sm text-white/60">
+                {address && <li>{address}</li>}
+                {email && <li>{email}</li>}
+                {phone && <li dir="ltr" style={{ unicodeBidi: "isolate" }}>{phone}</li>}
+              </ul>
+            </div>
+          )}
         </div>
         <div className="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-white/40">

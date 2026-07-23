@@ -86,7 +86,18 @@
     "subtitle": "Partner with us for lucrative real estate investments",
     "description": "RRC Saudi offers carefully curated investment opportunities in Saudi Arabia's rapidly growing real estate market. Benefit from our deep market knowledge, strategic partnerships, and commitment to creating value for our partners.",
     "highlightsTitle": "Strategic Retail Investment Opportunities",
-    "emptyState": "Investment data coming soon",
+    "emptyState": "Investment data available upon request",
+    "emptyStateDesc": "Detailed performance metrics, portfolio breakdowns, and projected returns are available exclusively through our investment advisory team.",
+    "emptyStateCta": "Request Investment Brief",
+    "processTitle": "Our Investment Process",
+    "step1Title": "Initial Consultation",
+    "step1Desc": "We discuss your investment goals, risk profile, and preferred asset classes to tailor a strategy that aligns with your objectives.",
+    "step2Title": "Market Analysis",
+    "step2Desc": "Our research team conducts comprehensive market analysis, identifying high-potential opportunities across Saudi Arabia's key real estate sectors.",
+    "step3Title": "Portfolio Design",
+    "step3Desc": "We structure a diversified investment portfolio optimized for risk-adjusted returns, with transparent fee structures and clear exit strategies.",
+    "step4Title": "Ongoing Management",
+    "step4Desc": "Your portfolio is actively managed with regular performance reporting, strategic rebalancing, and continuous market monitoring.",
     "benefits": [
       "High-growth market with strong fundamentals",
       "Transparent and ethical investment practices",
@@ -126,25 +137,31 @@
       "addressLabel": "Address",
       "phoneLabel": "Phone",
       "emailLabel": "Email",
-      "address": "",
-      "phone": "",
-      "email": "",
-      "availability": "We are available Sunday through Thursday to answer your inquiries"
+      "address": "Riyadh, Kingdom of Saudi Arabia",
+      "phone": "+966 XX XXX XXXX",
+      "email": "info@rrcsaudi.com",
+      "availability": "We are available Sunday through Thursday to answer your inquiries",
+      "emptyState": "Contact information will be updated soon",
+      "emptyDesc": "Our team will be available to assist you shortly"
     }
+  },
+  "home": {
+    "metaTitle": "RRC Saudi - Real Estate Development & Investment",
+    "metaDescription": "RRC Saudi delivers world-class real estate development and investment solutions across the Kingdom of Saudi Arabia."
   },
   "footer": {
     "description": "RRC Saudi is a leading real estate development and investment firm dedicated to shaping the future of urban living in the Kingdom of Saudi Arabia.",
     "quickLinks": "Quick Links",
     "services": "Our Services",
     "contact": "Contact Information",
-    "address": "",
-    "phone": "",
-    "email": "",
+    "address": "Riyadh, Kingdom of Saudi Arabia",
+    "phone": "+966 XX XXX XXXX",
+    "email": "info@rrcsaudi.com",
     "rights": "All rights reserved.",
     "copyright": "RRC Saudi"
   },
   "admin": {
-    "nav": {
+  "nav": {
       "dashboard": "Dashboard",
       "projects": "Projects",
       "services": "Services",

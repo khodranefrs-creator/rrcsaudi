@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     "RRC Saudi delivers world-class real estate development and investment solutions across the Kingdom of Saudi Arabia.",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/favicon.svg",
   },
 };
 

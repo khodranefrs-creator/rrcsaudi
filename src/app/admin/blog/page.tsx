@@ -2,20 +2,25 @@
 
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Plus, Edit, FileText } from "lucide-react";
+import { FileText, Eye } from "lucide-react";
+import { DataTable } from "@/components/admin/data-table";
+import { useAdminFetch } from "@/lib/use-admin-fetch";
 
-const blogPosts = [
-  { id: "1", titleEn: "Saudi Real Estate Market Outlook 2026", status: "PUBLISHED", date: "2026-06-15" },
-  { id: "2", titleEn: "Investing in Vision 2030 Mega Projects", status: "PUBLISHED", date: "2026-05-28" },
-  { id: "3", titleEn: "Sustainable Real Estate Development", status: "DRAFT", date: "2026-05-10" },
-];
+interface BlogPost {
+  id: string;
+  titleEn: string;
+  slug: string;
+  published: boolean;
+  createdAt: string;
+}
 
 export default function AdminBlogPage() {
   const { data: session } = useSession();
   if (!session) redirect("/en/admin/login");
+
+  const { data: posts, loading, error, refetch } = useAdminFetch<BlogPost>("/api/blog");
 
   return (
     <div className="p-6 space-y-6">
@@ -24,17 +29,18 @@ export default function AdminBlogPage() {
           <h1 className="text-2xl font-bold">Blog Posts</h1>
           <p className="text-muted-foreground">Manage blog content</p>
         </div>
-        <Button variant="gold">
-          <Plus className="h-4 w-4 mr-2" />
-          New Post
-        </Button>
+        <div />
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>All Posts</CardTitle>
-        </CardHeader>
-        <CardContent>
+      <DataTable
+        data={posts}
+        isLoading={loading}
+        error={error}
+        title="All Posts"
+        onRetry={refetch}
+        emptyMessage="No blog posts yet. Create your first post to get started."
+      >
+        {(data) => (
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
@@ -46,7 +52,7 @@ export default function AdminBlogPage() {
                 </tr>
               </thead>
               <tbody>
-                {blogPosts.map((post) => (
+                {data.map((post) => (
                   <tr key={post.id} className="border-b last:border-0">
                     <td className="py-3 pr-4">
                       <div className="flex items-center gap-2">
@@ -55,19 +61,31 @@ export default function AdminBlogPage() {
                       </div>
                     </td>
                     <td className="py-3 pr-4">
-                      <Badge variant={post.status === "PUBLISHED" ? "gold" : "secondary"}>{post.status}</Badge>
+                      <Badge variant={post.published ? "gold" : "secondary"}>
+                        {post.published ? "PUBLISHED" : "DRAFT"}
+                      </Badge>
                     </td>
-                    <td className="py-3 pr-4 text-muted-foreground">{post.date}</td>
+                    <td className="py-3 pr-4 text-muted-foreground">
+                      {new Date(post.createdAt).toLocaleDateString()}
+                    </td>
                     <td className="py-3">
-                      <Button variant="ghost" size="sm"><Edit className="h-4 w-4" /></Button>
+                      <div className="flex items-center gap-2">
+                        {post.published && (
+                          <a href={`/en/blog/${post.slug}`} target="_blank">
+                            <Button variant="ghost" size="sm">
+                              <Eye className="h-4 w-4" />
+                            </Button>
+                          </a>
+                        )}
+                      </div>
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-        </CardContent>
-      </Card>
+        )}
+      </DataTable>
     </div>
   );
 }

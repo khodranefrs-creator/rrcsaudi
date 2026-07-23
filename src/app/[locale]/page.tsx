@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: Props) {
     openGraph: {
       title: t("metaTitle"),
       description: t("metaDescription"),
-      images: [{ url: "/images/og-home.jpg", width: 1200, height: 630 }],
+      images: [{ url: "/images/og-default.svg", width: 1200, height: 630 }],
     },
   };
 }

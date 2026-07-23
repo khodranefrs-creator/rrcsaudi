@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { useLocale, useTranslations } from "next-intl"
 import { motion } from "framer-motion"
-import { ChevronDown } from "lucide-react"
+import { ChevronDown, ArrowUpRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const containerVariants = {
@@ -10,17 +10,12 @@ const containerVariants = {
     opacity: 1,
     transition: { staggerChildren: 0.2, delayChildren: 0.3 },
   },
-} as const
+}
 
 const itemVariants = {
   hidden: { opacity: 0, y: 60 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" as const } },
-} as const
-
-const lineVariants = {
-  hidden: { scaleX: 0 },
-  visible: { scaleX: 1, transition: { duration: 0.8, delay: 0.8, ease: "easeOut" as const } },
-} as const
+}
 
 export default function Hero() {
   const locale = useLocale()
@@ -29,21 +24,21 @@ export default function Hero() {
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-navy-900">
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.06]"
+        className="pointer-events-none absolute inset-0 opacity-[0.05]"
         style={{
           backgroundImage: `
-            linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px),
-            linear-gradient(0deg, rgba(255,255,255,0.1) 1px, transparent 1px),
-            radial-gradient(circle at 25% 40%, rgba(201,169,110,0.15) 0%, transparent 50%),
-            radial-gradient(circle at 75% 60%, rgba(201,169,110,0.1) 0%, transparent 50%),
-            repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255,255,255,0.03) 40px, rgba(255,255,255,0.03) 41px),
-            repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(255,255,255,0.02) 40px, rgba(255,255,255,0.02) 41px)
+            linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px),
+            linear-gradient(0deg, rgba(255,255,255,0.08) 1px, transparent 1px),
+            radial-gradient(circle at 20% 30%, rgba(201,169,110,0.12) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, rgba(201,169,110,0.08) 0%, transparent 50%),
+            repeating-linear-gradient(45deg, transparent, transparent 60px, rgba(255,255,255,0.02) 60px, rgba(255,255,255,0.02) 61px),
+            repeating-linear-gradient(-45deg, transparent, transparent 60px, rgba(255,255,255,0.015) 60px, rgba(255,255,255,0.015) 61px)
           `,
-          backgroundSize: "60px 60px, 60px 60px, 100% 100%, 100% 100%, 100% 100%, 100% 100%",
+          backgroundSize: "80px 80px, 80px 80px, 100% 100%, 100% 100%, 100% 100%, 100% 100%",
         }}
       />
 
-      <div className="absolute inset-0 bg-linear-to-b from-navy-900/90 via-navy-900/75 to-navy-900/60" />
+      <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-navy-900/95 via-navy-900/80 to-navy-900/60" />
 
       <motion.div
         className="relative z-10 mx-auto max-w-5xl px-4 text-center"
@@ -59,12 +54,12 @@ export default function Hero() {
         </motion.h1>
 
         <motion.div
-          className="mx-auto mt-4 h-1 w-24 rounded-full bg-linear-to-r from-gold-400 to-gold-600"
-          variants={lineVariants}
+          className="mx-auto mt-6 h-1 w-20 rounded-full bg-linear-to-r from-gold-500 to-gold-300"
+          variants={itemVariants}
         />
 
         <motion.p
-          className="mx-auto mt-6 max-w-3xl text-lg text-white/70 sm:text-xl"
+          className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-white/60 sm:text-xl"
           variants={itemVariants}
           dir={locale === "ar" ? "rtl" : "ltr"}
         >
@@ -81,12 +76,15 @@ export default function Hero() {
             className="px-8 text-base font-semibold"
             asChild
           >
-            <Link href="/projects">{t("cta1")}</Link>
+            <Link href="/projects">
+              {t("cta1")}
+              <ArrowUpRight className="h-4 w-4" />
+            </Link>
           </Button>
           <Button
             variant="outline"
             size="lg"
-            className="border-white/30 px-8 text-base text-white hover:bg-white/10 hover:text-white"
+            className="border-white/30 bg-transparent px-8 text-base text-white/80 hover:border-white/60 hover:bg-white/10 hover:text-white"
             asChild
           >
             <Link href="/contact">{t("cta2")}</Link>
@@ -101,8 +99,8 @@ export default function Hero() {
         transition={{ delay: 2, duration: 0.8, repeat: Infinity, repeatType: "reverse" }}
       >
         <div className="flex flex-col items-center gap-2">
-          <span className="text-xs tracking-widest text-white/40 uppercase">{t("scroll")}</span>
-          <ChevronDown className="h-5 w-5 text-gold-400" />
+          <span className="text-xs tracking-widest text-white/30 uppercase">{t("scroll")}</span>
+          <ChevronDown className="h-5 w-5 text-gold-400/60" />
         </div>
       </motion.div>
     </section>

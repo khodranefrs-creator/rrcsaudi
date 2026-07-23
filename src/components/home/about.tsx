@@ -1,16 +1,8 @@
 "use client"
 
-import { useLocale, useTranslations } from "next-intl"
+import { useTranslations } from "next-intl"
 import { motion } from "framer-motion"
 import { Section } from "@/components/ui/section"
-import { AnimatedCounter } from "@/components/ui/animated-counter"
-
-const statsConfig = [
-  { key: "years", target: 25 },
-  { key: "projects", target: 150 },
-  { key: "partners", target: 50 },
-  { key: "expertise", target: 5 },
-] as const
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -26,7 +18,6 @@ const itemVariants = {
 } as const
 
 export default function About() {
-  const locale = useLocale()
   const t = useTranslations("about")
 
   return (
@@ -53,16 +44,13 @@ export default function About() {
           </motion.p>
 
           <motion.div
-            className="grid grid-cols-2 gap-6 pt-4 sm:grid-cols-4"
+            className="grid grid-cols-2 gap-4 pt-4 sm:grid-cols-4"
             variants={itemVariants}
           >
-            {statsConfig.map((stat) => (
-              <div key={stat.key} className="text-center" dir={locale === "ar" ? "ltr" : "ltr"}>
-                <div className="text-3xl font-bold text-gold-500 sm:text-4xl">
-                  <AnimatedCounter target={stat.target} suffix={t(`statsSuffix.${stat.key}`)} />
-                </div>
-                <div className="mt-1 text-xs font-medium text-charcoal-500 uppercase tracking-wider">
-                  {t(`stats.${stat.key}`)}
+            {(["years", "projects", "partners", "expertise"] as const).map((key) => (
+              <div key={key} className="rounded-lg bg-white/60 p-4 text-center shadow-sm">
+                <div className="text-sm font-semibold leading-relaxed text-charcoal-700">
+                  {t(`stats.${key}`)}
                 </div>
               </div>
             ))}
@@ -93,7 +81,7 @@ export default function About() {
               <div className="h-10 w-1 rounded-full bg-gold-500" />
               <div>
                 <p className="text-sm font-semibold text-white">RRC Saudi</p>
-                <p className="text-xs text-gold-300">Excellence in Real Estate</p>
+                <p className="text-xs text-gold-300">{t("subtitle")}</p>
               </div>
             </div>
           </div>

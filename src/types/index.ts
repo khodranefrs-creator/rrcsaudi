@@ -110,7 +110,7 @@ export type Project = {
   totalArea: string | null
   completionDate: Date | null
   featured: boolean
-  investmentInfo: unknown
+  investmentInfo?: unknown
   published: boolean
   createdAt: Date
   updatedAt: Date

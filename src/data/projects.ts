@@ -15,7 +15,7 @@ export type SampleProject = {
   totalArea: string | null
   completionDate: string | null
   featured: boolean
-  investmentInfo: Record<string, unknown>
+  investmentInfo?: Record<string, unknown>
 }
 
 export const projects: SampleProject[] = [
@@ -39,7 +39,6 @@ export const projects: SampleProject[] = [
     totalArea: "250,000 sqm",
     completionDate: "2024-06-15",
     featured: true,
-    investmentInfo: { roi: "12%", units: 150 },
   },
   {
     id: "proj-2",
@@ -61,7 +60,6 @@ export const projects: SampleProject[] = [
     totalArea: "85,000 sqm",
     completionDate: "2026-03-01",
     featured: true,
-    investmentInfo: { roi: "9.5%", floors: 35, leasableArea: "65,000 sqm" },
   },
   {
     id: "proj-3",
@@ -83,7 +81,6 @@ export const projects: SampleProject[] = [
     totalArea: "320,000 sqm",
     completionDate: "2027-09-01",
     featured: true,
-    investmentInfo: { roi: "11%", residentialUnits: 200, retailUnits: 60 },
   },
   {
     id: "proj-4",
@@ -105,7 +102,6 @@ export const projects: SampleProject[] = [
     totalArea: "1,500,000 sqm",
     completionDate: "2030-12-01",
     featured: false,
-    investmentInfo: { phases: 5, residentialPlots: 500, commercialPlots: 80 },
   },
   {
     id: "proj-5",
@@ -127,7 +123,6 @@ export const projects: SampleProject[] = [
     totalArea: "45,000 sqm",
     completionDate: "2023-12-01",
     featured: true,
-    investmentInfo: { roi: "15%", units: 30, soldOut: true },
   },
   {
     id: "proj-6",
@@ -149,7 +144,6 @@ export const projects: SampleProject[] = [
     totalArea: "180,000 sqm",
     completionDate: "2026-09-01",
     featured: false,
-    investmentInfo: { roi: "8.5%", leasableArea: "140,000 sqm", parkingSpaces: 2500 },
   },
   {
     id: "proj-7",
@@ -171,6 +165,5 @@ export const projects: SampleProject[] = [
     totalArea: "120,000 sqm",
     completionDate: "2027-06-01",
     featured: false,
-    investmentInfo: { roi: "10%", chalets: 50, hotelRooms: 80 },
   },
 ]

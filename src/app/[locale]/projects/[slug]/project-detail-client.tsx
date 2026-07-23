@@ -105,10 +105,11 @@ export function ProjectDetailClient({ project, locale }: Props) {
           </div>
 
           <div className="space-y-6">
+            {project.investmentInfo && Object.keys(project.investmentInfo).length > 0 && (
             <Card>
               <CardContent className="p-6 space-y-4">
                 <h3 className="font-semibold text-lg">{t("investment.title")}</h3>
-                {project.investmentInfo && Object.entries(project.investmentInfo).map(([key, val]) => (
+                {Object.entries(project.investmentInfo).map(([key, val]) => (
                   <div key={key} className="flex justify-between text-sm">
                     <span className="text-muted-foreground capitalize">{key.replace(/([A-Z])/g, " $1")}</span>
                     <span className="font-medium">{String(val)}</span>
@@ -119,6 +120,7 @@ export function ProjectDetailClient({ project, locale }: Props) {
                 </Button>
               </CardContent>
             </Card>
+            )}
 
             <Card>
               <CardContent className="p-6 space-y-4">

@@ -21,17 +21,17 @@ const overlayVariants: Variants = {
   exit: { opacity: 0 },
 }
 
-const panelVariants: Variants = {
-  hidden: { x: "100%" },
+const createPanelVariants = (isRtl: boolean): Variants => ({
+  hidden: { x: isRtl ? "-100%" : "100%" },
   visible: {
     x: 0,
-    transition: { type: "spring", damping: 25, stiffness: 200, mass: 0.8 },
+    transition: { duration: 0.3, ease: "easeOut" },
   },
   exit: {
-    x: "100%",
-    transition: { type: "spring", damping: 30, stiffness: 300, mass: 0.8 },
+    x: isRtl ? "-100%" : "100%",
+    transition: { duration: 0.25, ease: "easeIn" },
   },
-}
+})
 
 const itemVariants: Variants = {
   hidden: { x: 40, opacity: 0 },
@@ -56,8 +56,14 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose()
     }
-    if (isOpen) window.addEventListener("keydown", handleEscape)
-    return () => window.removeEventListener("keydown", handleEscape)
+    if (isOpen) {
+      window.addEventListener("keydown", handleEscape)
+      document.body.style.overflow = "hidden"
+    }
+    return () => {
+      window.removeEventListener("keydown", handleEscape)
+      document.body.style.overflow = ""
+    }
   }, [isOpen, onClose])
 
   return (
@@ -79,9 +85,9 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
             dir={isRtl ? "rtl" : "ltr"}
             className={cn(
               "absolute top-0 bottom-0 w-full max-w-sm bg-navy-900 shadow-lux-xl",
-              "end-0"
+              isRtl ? "start-0" : "end-0"
             )}
-            variants={panelVariants}
+            variants={createPanelVariants(isRtl)}
             initial="hidden"
             animate="visible"
             exit="exit"

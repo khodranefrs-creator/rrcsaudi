@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { useLocale, useTranslations } from "next-intl"
 import { motion } from "framer-motion"
+import { Handshake } from "lucide-react"
 import { Section } from "@/components/ui/section"
 import { cn } from "@/lib/utils"
 
@@ -41,9 +42,36 @@ export default function Partners() {
   return (
     <Section className="bg-white" title={t("title")} subtitle={t("subtitle")}>
       {loaded && partners.length === 0 && (
-        <div className="mb-8 rounded-xl border border-dashed border-charcoal-200 bg-cream/30 p-8 text-center">
-          <p className="text-sm text-charcoal-400">{locale === "ar" ? "سيتم إضافة الشركاء قريباً" : "Partner information coming soon"}</p>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="relative overflow-hidden rounded-2xl border border-gold-500/10 bg-linear-to-br from-cream via-beige to-warm-gray p-12 text-center"
+        >
+          <div
+            className="pointer-events-none absolute inset-0 opacity-[0.15]"
+            style={{
+              backgroundImage: `
+                linear-gradient(90deg, rgba(201,169,110,0.08) 1px, transparent 1px),
+                linear-gradient(0deg, rgba(201,169,110,0.08) 1px, transparent 1px)
+              `,
+              backgroundSize: "40px 40px, 40px 40px",
+            }}
+          />
+          <div className="relative">
+            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-navy-900 shadow-lux">
+              <Handshake className="h-7 w-7 text-gold-400" />
+            </div>
+            <h3 className="text-xl font-semibold text-navy-900">
+              {locale === "ar" ? "شراكات استراتيجية قادمة" : "Strategic Partnerships Forthcoming"}
+            </h3>
+            <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-charcoal-500">
+              {locale === "ar"
+                ? "سيتم الإعلان عن شراكاتنا الاستراتيجية قريباً. تابعونا لتحديثات حول التعاون القادم."
+                : "Our strategic partnerships will be announced in due course. Stay tuned for updates on our upcoming collaborations."}
+            </p>
+          </div>
+        </motion.div>
       )}
 
       {partners.length > 0 && (

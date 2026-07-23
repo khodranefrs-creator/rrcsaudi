@@ -7,9 +7,6 @@ import type { Prisma } from "@prisma/client";
 export const dynamic = "force-dynamic";
 
 export async function GET() {
-  const session = await requireAdmin();
-  if (session instanceof Response) return session;
-
   try {
     const settings = await prisma.siteSetting.findMany();
     const map: Record<string, unknown> = {};
