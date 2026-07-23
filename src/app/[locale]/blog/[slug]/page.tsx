@@ -60,7 +60,7 @@ export async function generateMetadata({ params }: Props) {
     openGraph: {
       title,
       description: excerpt,
-      images: [{ url: "/images/og-blog.jpg", width: 1200, height: 630 }],
+      images: [{ url: "/images/og-default.svg", width: 1200, height: 630 }],
     },
   };
 }

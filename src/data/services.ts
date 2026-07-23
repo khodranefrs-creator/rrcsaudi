@@ -33,8 +33,8 @@ export const services: SampleService[] = [
     descriptionAr: "خدمات استشارات استثمارية استراتيجية تشمل تحليل السوق وتحسين المحفظة وتقييم المخاطر وتحديد الفرص في سوق العقارات السعودي.",
     icon: "TrendingUp",
     order: 2,
-    featuresEn: ["Market research & analysis", "Portfolio strategy", "Risk assessment", "ROI forecasting"],
-    featuresAr: ["أبحاث السوق والتحليل", "استراتيجية المحفظة", "تقييم المخاطر", "التنبؤ بالعائد على الاستثمار"],
+    featuresEn: ["Market research & analysis", "Portfolio strategy", "Risk assessment", "Financial analysis"],
+    featuresAr: ["أبحاث السوق والتحليل", "استراتيجية المحفظة", "تقييم المخاطر", "التحليل المالي"],
   },
   {
     id: "svc-3",

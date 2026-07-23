@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props) {
     openGraph: {
       title,
       description: locale === "ar" ? project.descriptionAr : project.descriptionEn,
-      images: [{ url: project.images[0] || "/images/og-projects.jpg", width: 1200, height: 630 }],
+      images: [{ url: project.images[0] || "/images/og-default.svg", width: 1200, height: 630 }],
     },
   };
 }

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { Phone, Mail, MapPin } from "lucide-react";
 
 type ContactSettings = {
   phone: string;
@@ -63,16 +64,18 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-          {hasContactInfo && (
-            <div>
-              <h3 className="text-sm font-semibold text-gold-500 uppercase tracking-wider">{t("contact")}</h3>
+          <div>
+            <h3 className="text-sm font-semibold text-gold-500 uppercase tracking-wider">{t("contact")}</h3>
+            {hasContactInfo ? (
               <ul className="mt-4 space-y-2 text-sm text-white/60">
-                {address && <li>{address}</li>}
-                {email && <li>{email}</li>}
-                {phone && <li dir="ltr" style={{ unicodeBidi: "isolate" }}>{phone}</li>}
+                {address && <li className="flex items-center gap-2"><MapPin className="h-3.5 w-3.5 shrink-0 text-gold-400" />{address}</li>}
+                {email && <li className="flex items-center gap-2"><Mail className="h-3.5 w-3.5 shrink-0 text-gold-400" />{email}</li>}
+                {phone && <li className="flex items-center gap-2" dir="ltr" style={{ unicodeBidi: "isolate" }}><Phone className="h-3.5 w-3.5 shrink-0 text-gold-400" />{phone}</li>}
               </ul>
-            </div>
-          )}
+            ) : (
+              <p className="mt-4 text-sm text-white/40 italic">Contact information coming soon</p>
+            )}
+          </div>
         </div>
         <div className="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-white/40">
